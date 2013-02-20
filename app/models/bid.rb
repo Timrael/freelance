@@ -1,4 +1,6 @@
 class Bid < ActiveRecord::Base
+  default_scope order('created_at')
+
   belongs_to :project
   belongs_to :user
 
