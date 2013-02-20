@@ -18,6 +18,7 @@ gem 'settingslogic'
 gem 'memoist'
 gem 'decent_exposure'
 gem 'twitter-bootstrap-rails'
+gem 'devise'
 
 group :development do
   gem 'debugger'
