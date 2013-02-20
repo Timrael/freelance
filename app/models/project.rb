@@ -6,6 +6,7 @@ class Project < ActiveRecord::Base
   CONDITION_CLOSED         = "closed"
 
   belongs_to :author, :class_name => "User", :foreign_key => "author_id"
+  has_many :bids
 
   attr_accessible :title, :description
 
@@ -17,5 +18,9 @@ class Project < ActiveRecord::Base
     def on_competition
       where(:condition => CONDITION_ON_COMPETITION)
     end
+  end
+
+  def have_chosen_bid?
+    self.bids.where(:chosen => true).present?
   end
 end
