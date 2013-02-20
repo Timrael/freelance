@@ -1,0 +1,14 @@
+<h1>Projects on competition</h1>
+
+<%= link_to "Create a project", :new_project %>
+
+<% projects.each do |project| %>
+    <div>
+      <h3><%= link_to project.title, :action => :show, :id => project.id %></h3>
+      <div>
+        <p><%= project.description %></p>
+      </div>
+    </div>
+<% end %>
+
+<%= will_paginate projects %>

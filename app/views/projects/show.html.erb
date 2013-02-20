@@ -1,0 +1,12 @@
+<h1>Project: <%= project.title %></h1>
+
+<% if current_user_is_author? %>
+    <%= link_to "Edit project" , :action => :edit, :id => project.id %>
+    <%= link_to "Destroy project", {:action => :destroy, :id => project.id}, :method => :delete, :confirm => 'Are you sure?' %>
+<% end %>
+
+<div>
+  <p><%= project.description %></p>
+</div>
+
+<%= link_to 'All projects', :action => :index %>
