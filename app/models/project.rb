@@ -10,6 +10,10 @@ class Project < ActiveRecord::Base
 
   attr_accessible :title, :description
 
+  validates_presence_of :author_id, :title, :description
+  validates :condition, :inclusion =>
+      {:in => [CONDITION_ON_COMPETITION, CONDITION_IN_PROGRESS, CONDITION_CLOSED]}
+
   before_validation do |p|
     p.condition ||= CONDITION_ON_COMPETITION
   end
