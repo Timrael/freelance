@@ -14,6 +14,11 @@ class Bid < ActiveRecord::Base
   before_validation :set_default_attributes
   before_update :launch_project, :if => :have_been_chosen?
 
+  def choose
+    self.chosen = true
+    self.save
+  end
+
   protected
 
   def project_author_cannot_be_bid_author
