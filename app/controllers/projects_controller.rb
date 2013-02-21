@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def projects
-    Project.on_competition.paginate(:page => params[:page])
+    Project.paginate(:page => params[:page])
   end
   memoize :projects
 
