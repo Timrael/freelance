@@ -37,7 +37,7 @@ class Bid < ActiveRecord::Base
   end
 
   def have_been_chosen?
-    self.changed_attributes.include?(:chosen) && self.chosen?
+    self.changed_attributes.include?("chosen") && self.chosen?
   end
 
   def launch_project
