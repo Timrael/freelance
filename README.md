@@ -5,7 +5,7 @@ The application intended for co-working between freelancers and employers.
 
 ## Demo
 
-You can find demo of this app [here][1]. Users: employer1, employer2, freelancer1, freelancer2. Password: qwerty.
+You can find demo of this app [here][1]. Users: employer1@example.com, freelancer1@example.com, freelancer2@example.com, freelancer3@example.com. Password: qwerty.
 
 ## Installation
 
