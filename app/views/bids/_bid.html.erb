@@ -11,17 +11,13 @@
         </div>
     <% end %>
 
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_area :description %>
-    </p>
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 3, :class => "span6"  %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, :class => "span6"  %>
 
     <p>
-      <%= f.label :price %><br>
-      <%= f.text_field :price %>
-    </p>
-
-    <p>
-      <%= f.submit %>
+      <%= f.submit nil, :class => "btn" %>
     </p>
 <% end %>
