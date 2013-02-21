@@ -23,7 +23,7 @@ class Bid < ActiveRecord::Base
 
   def project_author_cannot_be_bid_author
     errors.add(:user_id, "can't be same person as project author") if
-        self.user == project.author
+        self.project.present? && self.user == project.author
   end
 
   def chosen_bid_cannot_be_more_than_one
