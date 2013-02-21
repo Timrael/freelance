@@ -11,14 +11,16 @@
 <div>
   <%= render 'layouts/devise' %>
 </div>
+<div class="container">
+    <% flash.each do |name, msg| %>
+        <div class="<%= class_for_flash(name) %>">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <%= msg %>
+        </div>
+    <% end %>
 
-<% flash.each do |name, msg| %>
-    <div class="<%= name %>">
-      <p><%= msg %></p>
-    </div>
-<% end %>
-
-<%= yield %>
+    <%= yield %>
+</div>
 
 </body>
 </html>
