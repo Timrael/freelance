@@ -10,17 +10,11 @@
           </ul>
         </div>
     <% end %>
-    <p>
-      <%= f.label :title %><br>
-      <%= f.text_field :title %>
-    </p>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => "span6" %>
 
-    <p>
-      <%= f.label :description %><br>
-      <%= f.text_area :description %>
-    </p>
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 5, :class => "span6"  %>
 
-    <p>
-      <%= f.submit %>
-    </p>
+      <p><%= f.submit nil, :class => "btn" %></p>
 <% end %>
