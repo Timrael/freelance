@@ -10,3 +10,27 @@
 </div>
 
 <%= link_to 'All projects', :action => :index %>
+
+<% if bids.present? %>
+    <div>
+      <h2>Bids</h2>
+      <% bids.each do |bid| %>
+        <div class="<%= "chosen" if bid.chosen? %>">
+
+          <p><%= bid.description %></p>
+          <p>Price: <%= bid.price %>$</p>
+          <% if current_user_is_author? && !project.have_chosen_bid? %>
+            <%= button_to "Choose", {:controller => :bids, :action => :choose,
+                          :project_id => project.id, :bid_id => bid.id}, :method => :put %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+
+    <%= will_paginate bids %>
+<% end %>
+
+<% if !project.have_chosen_bid? && !current_user_is_author? %>
+    <h3>Add Bid</h3>
+    <%= render :partial => 'bids/bid', :locals => {:bid => project.bids.new} %>
+<% end %>

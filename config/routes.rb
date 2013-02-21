@@ -3,5 +3,8 @@ Freelance::Application.routes.draw do
 
   devise_for :users
 
-  resources :projects
+  resources :projects do
+    resources :bids, :only => :create
+    match "bids/:bid_id/choose" => "bids#choose", :via => :put
+  end
 end
