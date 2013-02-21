@@ -6,6 +6,7 @@ gem 'pg'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'coffee-rails'
   gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
@@ -18,6 +19,7 @@ gem 'settingslogic'
 gem 'memoist'
 gem 'decent_exposure'
 gem 'twitter-bootstrap-rails'
+gem 'devise'
 
 group :development do
   gem 'debugger'

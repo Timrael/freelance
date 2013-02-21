@@ -1,0 +1,20 @@
+<%= form_for project do |f| %>
+    <% if project.errors.any? %>
+        <div id="errorExplanation">
+          <h2><%= pluralize(project.errors.count, "error") %> prohibited
+            this post from being saved:</h2>
+          <ul>
+            <% project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+      <%= f.label :title %>
+      <%= f.text_field :title, :class => "span6" %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 5, :class => "span6"  %>
+
+      <p><%= f.submit nil, :class => "btn" %></p>
+<% end %>

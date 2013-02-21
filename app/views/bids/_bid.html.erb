@@ -1,0 +1,23 @@
+<%= form_for bid, :url => { :controller => :bids, :action => :create, :project_id => bid.project_id } do |f| %>
+    <% if bid.errors.any? %>
+        <div id="errorExplanation">
+          <h2><%= pluralize(bid.errors.count, "error") %> prohibited
+            this post from being saved:</h2>
+          <ul>
+            <% bid.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+      <%= f.label :description %>
+      <%= f.text_area :description, :rows => 3, :class => "span6"  %>
+
+      <%= f.label :price %>
+      <%= f.text_field :price, :class => "span6"  %>
+
+    <p>
+      <%= f.submit nil, :class => "btn" %>
+    </p>
+<% end %>
