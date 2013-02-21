@@ -44,7 +44,7 @@
     <%= will_paginate bids %>
 <% end %>
 
-<% if !project.have_chosen_bid? && !current_user_is_author? %>
+<% if user_signed_in? && !project.have_chosen_bid? && !current_user_is_author? %>
     <h3>Create bid</h3>
     <%= render :partial => 'bids/bid', :locals => {:bid => project.bids.new} %>
 <% end %>
