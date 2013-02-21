@@ -28,7 +28,7 @@ class Bid < ActiveRecord::Base
 
   def chosen_bid_cannot_be_more_than_one
     errors.add(:chosen, "can't be more than one per project") if
-        self.chosen && self.project.have_chosen_bid?
+        self.project.present? && self.have_been_chosen? && self.project.have_chosen_bid?
   end
 
   def set_default_attributes
