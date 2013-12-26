@@ -4,7 +4,7 @@ class BidsController < ApplicationController
   extend Memoist
 
   before_filter :authenticate_user!
-  before_filter :render_403, :unless => :current_user_is_project_author?, :only => :choose
+  before_filter :render_403, unless: :current_user_is_project_author?, only: :choose
 
   def create
     bid.user = current_user

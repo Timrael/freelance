@@ -7,13 +7,13 @@ class Bid < ActiveRecord::Base
   attr_accessible :description, :price
 
   validates_presence_of :project_id, :user_id, :description
-  validates_numericality_of :price, :greater_than_or_equal_to => 0
-  validates :chosen, :inclusion => {:in => [true, false]}
+  validates_numericality_of :price, greater_than_or_equal_to: 0
+  validates :chosen, inclusion: {in: [true, false]}
   validate :project_author_cannot_be_bid_author, :chosen_bid_cannot_be_more_than_one
-  validate :project_cannot_have_chosen_bid, :on => :create
+  validate :project_cannot_have_chosen_bid, on: :create
 
   before_validation :set_default_attributes
-  before_update :launch_project, :if => :have_been_chosen?
+  before_update :launch_project, if: :have_been_chosen?
 
   def choose
     self.chosen = true

@@ -2,16 +2,16 @@
 
 <% if current_user_is_author? %>
     <div class="navbar">
-    <%= link_to raw("<span class='icon-edit'> Edit project") , {:action => :edit, :id => project.id}, :class => "btn" %>
-    <%= link_to raw("<span class='icon-trash'> Destroy project"), {:action => :destroy, :id => project.id},
-                :method => :delete, :confirm => 'Are you sure?', :class => "btn btn-danger" %>
+    <%= link_to raw("<span class='icon-edit'> Edit project") , {action: :edit, id: project.id}, class: "btn" %>
+    <%= link_to raw("<span class='icon-trash'> Destroy project"), {action: :destroy, id: project.id},
+                method: :delete, confirm: 'Are you sure?', class: "btn btn-danger" %>
     </div>
 <% end %>
 <div class="well">
   <p><%= project.description %></p>
 </div>
 
-<%= link_to raw('<span class="icon-arrow-left"> Back'), {:action => :index}, :class => "btn" %>
+<%= link_to raw('<span class="icon-arrow-left"> Back'), {action: :index}, class: "btn" %>
 
 <% if bids.present? %>
     <h2>Bids</h2>
@@ -34,8 +34,8 @@
 
             <% if current_user_is_author? && !project.have_chosen_bid? %>
                 <td class="span2">
-                <%= button_to "Choose", {:controller => :bids, :action => :choose, :project_id => project.id,
-                                         :bid_id => bid.id}, :method => :put, :class => "btn btn-primary" %>
+                <%= button_to "Choose", {controller: :bids, action: :choose, project_id: project.id,
+                                         bid_id: bid.id}, method: :put, class: "btn btn-primary" %>
                 </td>
             <% end %>
       <% end %>
@@ -46,5 +46,5 @@
 
 <% if user_signed_in? && !project.have_chosen_bid? && !current_user_is_author? %>
     <h3>Create bid</h3>
-    <%= render :partial => 'bids/bid', :locals => {:bid => project.bids.new} %>
+    <%= render partial: 'bids/bid', locals: {bid: project.bids.new} %>
 <% end %>

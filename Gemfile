@@ -7,7 +7,7 @@ gem 'pg'
 # in production environments by default.
 group :assets do
   gem 'coffee-rails'
-  gem 'therubyracer', :platforms => :ruby
+  gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
 end

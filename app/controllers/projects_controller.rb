@@ -3,8 +3,8 @@
 class ProjectsController < ApplicationController
   extend Memoist
 
-  before_filter :authenticate_user!, :except => [:index, :show]
-  before_filter :render_403, :unless => :current_user_is_author?, :only => [:edit, :update, :destroy]
+  before_filter :authenticate_user!, except: [:index, :show]
+  before_filter :render_403, unless: :current_user_is_author?, only: [:edit, :update, :destroy]
 
   helper_method :projects, :project, :bids, :current_user_is_author?
 
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
   end
 
   def projects
-    Project.paginate(:page => params[:page])
+    Project.paginate(page: params[:page])
   end
   memoize :projects
 
@@ -50,7 +50,7 @@ class ProjectsController < ApplicationController
   memoize :project
 
   def bids
-    project.bids.paginate(:page => params[:page])
+    project.bids.paginate(page: params[:page])
   end
   memoize :bids
 end

@@ -3,7 +3,7 @@ require "spec_helper"
 
 describe Bid, "#chosen_bid_cannot_be_more_than_one" do
   let(:main_bid) { FactoryGirl.create(:bid) }
-  let(:same_project_bid) { FactoryGirl.create(:bid, :project_id => main_bid.project_id) }
+  let(:same_project_bid) { FactoryGirl.create(:bid, project_id: main_bid.project_id) }
 
   context "when project has already chosen bid" do
     before do

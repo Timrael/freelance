@@ -12,19 +12,19 @@ describe ProjectsController, "restricting access on edit, update, destroy" do
     end
 
     it "restricts access to edit action" do
-      get :edit, :id => project.id
+      get :edit, id: project.id
 
       response.response_code.should be 403
     end
 
     it "restricts access to update action" do
-      put :update, :id => project.id, :project => FactoryGirl.attributes_for(:project)
+      put :update, id: project.id, project: FactoryGirl.attributes_for(:project)
 
       response.response_code.should be 403
     end
 
     it "restricts access to destroy action" do
-      delete :destroy, :id => project.id
+      delete :destroy, id: project.id
 
       response.response_code.should be 403
     end
@@ -36,19 +36,19 @@ describe ProjectsController, "restricting access on edit, update, destroy" do
     end
 
     it "does NOT restrict access to edit action" do
-      get :edit, :id => project.id
+      get :edit, id: project.id
 
       response.response_code.should_not be 403
     end
 
     it "does NOT restrict access to update action" do
-      put :update, :id => project.id, :project => FactoryGirl.attributes_for(:project)
+      put :update, id: project.id, project: FactoryGirl.attributes_for(:project)
 
       response.response_code.should_not be 403
     end
 
     it "does NOT restrict access to destroy action" do
-      delete :destroy, :id => project.id
+      delete :destroy, id: project.id
 
       response.response_code.should_not be 403
     end

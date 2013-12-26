@@ -4,6 +4,6 @@ class ApplicationController < ActionController::Base
   protected
 
   def render_403
-    render :text => "Forbidden", :status => 403, :layout => false
+    render text: "Forbidden", status: 403, layout: false
   end
 end
