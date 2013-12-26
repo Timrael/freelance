@@ -1,8 +1,6 @@
 # encoding: utf-8
 
 class ProjectsController < ApplicationController
-  extend Memoist
-
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :render_403, unless: :current_user_is_author?, only: [:edit, :update, :destroy]
 
@@ -36,21 +34,20 @@ class ProjectsController < ApplicationController
   end
 
   def projects
-    Project.paginate(page: params[:page])
+    @projects ||= Project.paginate(page: params[:page])
   end
-  memoize :projects
 
   def project
-    if params[:id].present?
-      Project.find(params[:id])
-    else
-      current_user.projects.new(params[:project])
+    @project ||= begin
+      if params[:id].present?
+        Project.find(params[:id])
+      else
+        current_user.projects.new(params[:project])
+      end
     end
   end
-  memoize :project
 
   def bids
-    project.bids.paginate(page: params[:page])
+    @bids ||= project.bids.paginate(page: params[:page])
   end
-  memoize :bids
 end
