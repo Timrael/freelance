@@ -7,8 +7,7 @@ class BidsController < ApplicationController
   before_filter :render_403, unless: :current_user_is_project_author?, only: :choose
 
   def create
-    bid.user = current_user
-    bid.save
+    bid.update_attribute(:user, current_user)
     redirect_to project
   end
 
