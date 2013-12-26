@@ -16,8 +16,7 @@ class Bid < ActiveRecord::Base
   before_update :launch_project, if: :have_been_chosen?
 
   def choose
-    self.chosen = true
-    self.save
+    self.update_attribute(:chosen, true)
   end
 
   protected
@@ -47,7 +46,6 @@ class Bid < ActiveRecord::Base
   end
 
   def launch_project
-    self.project.condition = Project::CONDITION_IN_PROGRESS
-    self.project.save
+    self.project.update_attribute(:condition, Project::CONDITION_IN_PROGRESS)
   end
 end
