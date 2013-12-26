@@ -9,7 +9,7 @@ describe BidsController, "#choose" do
   context "when current user is NOT project author" do
     before do
       sign_in not_the_author
-      put :choose, :project_id => project.id, :bid_id => bid.id
+      put :select, project_id: project.id, bid_id: bid.id
     end
 
     it "restricts access to the action" do
@@ -20,7 +20,7 @@ describe BidsController, "#choose" do
   context "when current user is project author" do
     before do
       sign_in project.author
-      put :choose, :project_id => project.id, :bid_id => bid.id
+      put :select, project_id: project.id, bid_id: bid.id
     end
 
     it "does NOT restrict access to the action" do
@@ -28,7 +28,7 @@ describe BidsController, "#choose" do
     end
 
     it "chooses bid for the project" do
-      bid.reload.chosen.should be_true
+      bid.reload.selected?.should be_true
     end
   end
 end

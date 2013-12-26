@@ -6,17 +6,17 @@ describe Bid, "#launch_project" do
 
   context "when it has been chosen" do
     before do
-      bid.choose
+      bid.select_it
     end
 
     it "launches project" do
-      bid.project.condition.should eq Project::CONDITION_IN_PROGRESS
+      bid.project.in_progress?.should be_true
     end
   end
 
   context "when it has NOT been chosen" do
     it "does NOT launch project" do
-      bid.project.condition.should eq Project::CONDITION_ON_COMPETITION
+      bid.project.on_competition?.should be_true
     end
   end
 end

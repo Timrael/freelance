@@ -1,10 +1,8 @@
 # encoding: utf-8
 
 class BidsController < ApplicationController
-  extend Memoist
-
   before_filter :authenticate_user!
-  before_filter :render_403, :unless => :current_user_is_project_author?, :only => :choose
+  before_filter :render_403, unless: :current_user_is_project_author?, only: :select
 
   def create
     bid.user = current_user
@@ -12,8 +10,8 @@ class BidsController < ApplicationController
     redirect_to project
   end
 
-  def choose
-    bid.choose
+  def select
+    bid.select_it
     redirect_to project
   end
 
@@ -24,16 +22,16 @@ class BidsController < ApplicationController
   end
 
   def bid
-    if params[:bid_id]
-      project.bids.find(params[:bid_id])
-    else
-      project.bids.new(params[:bid])
+    @bid ||= begin
+      if params[:bid_id]
+        project.bids.find(params[:bid_id])
+      else
+        project.bids.new(params[:bid])
+      end
     end
   end
-  memoize :bid
 
   def project
-    Project.find(params[:project_id])
+    @project ||= Project.find(params[:project_id])
   end
-  memoize :project
 end
