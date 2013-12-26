@@ -2,7 +2,7 @@
 
 class BidsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :render_403, unless: :current_user_is_project_author?, only: :choose
+  before_filter :render_403, unless: :current_user_is_project_author?, only: :select
 
   def create
     bid.user = current_user
@@ -10,8 +10,8 @@ class BidsController < ApplicationController
     redirect_to project
   end
 
-  def choose
-    bid.choose
+  def select
+    bid.select_it
     redirect_to project
   end
 

@@ -11,25 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130220083713) do
+ActiveRecord::Schema.define(:version => 20131226065548) do
 
   create_table "bids", :force => true do |t|
-    t.integer  "project_id",                     :null => false
-    t.integer  "user_id",                        :null => false
-    t.text     "description",                    :null => false
-    t.integer  "price",                          :null => false
-    t.boolean  "chosen",      :default => false, :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
+    t.integer  "project_id",  :null => false
+    t.integer  "user_id",     :null => false
+    t.text     "description", :null => false
+    t.integer  "price",       :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.string   "state"
   end
 
   create_table "projects", :force => true do |t|
     t.integer  "author_id",   :null => false
     t.string   "title",       :null => false
     t.text     "description", :null => false
-    t.string   "condition",   :null => false
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "state"
   end
 
   create_table "users", :force => true do |t|

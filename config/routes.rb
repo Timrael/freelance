@@ -5,6 +5,6 @@ Freelance::Application.routes.draw do
 
   resources :projects do
     resources :bids, only: :create
-    match "bids/:bid_id/choose" => "bids#choose", via: :put
+    match "bids/:bid_id/select" => "bids#select", via: :put
   end
 end

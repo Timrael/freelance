@@ -8,6 +8,7 @@ gem 'will_paginate', '~> 3.0'
 gem 'settingslogic'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'state_machine'
 
 group :development do
   gem 'pry'

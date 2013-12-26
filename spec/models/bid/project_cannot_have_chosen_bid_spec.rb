@@ -7,7 +7,7 @@ describe Bid, "#project_cannot_have_chosen_bid" do
 
   context "when project has chosen bid" do
     before do
-      same_project_bid.choose
+      same_project_bid.select_it
     end
 
     it "is NOT valid" do

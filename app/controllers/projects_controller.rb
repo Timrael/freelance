@@ -4,7 +4,7 @@ class ProjectsController < ApplicationController
   before_filter :authenticate_user!, except: [:index, :show]
   before_filter :render_403, unless: :current_user_is_author?, only: [:edit, :update, :destroy]
 
-  helper_method :projects, :project, :bids, :current_user_is_author?
+  helper_method :projects, :project, :bids, :current_user_is_author?, :can_user_create_bid?, :can_author_select_bid?
 
   def create
     if project.save
@@ -31,6 +31,14 @@ class ProjectsController < ApplicationController
 
   def current_user_is_author?
     current_user == project.author
+  end
+
+  def can_user_create_bid?
+    user_signed_in? && project.on_competition? && !current_user_is_author?
+  end
+
+  def can_author_select_bid?
+    current_user_is_author? && project.on_competition?
   end
 
   def projects
