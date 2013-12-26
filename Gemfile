@@ -22,7 +22,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise'
 
 group :development do
-  gem 'debugger'
+  gem 'pry'
 end
 
 group :test do
